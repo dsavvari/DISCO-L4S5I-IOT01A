@@ -1,0 +1,10 @@
+.build
+.mbed
+projectfiles
+*.py*
+mbed-os
+mbed-os-ble-utils
+BUILD
+*.bin
+*.o
+
