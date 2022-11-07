@@ -1,3 +1,5 @@
+DIR="private"
+
 git clone https://github.com/ARMmbed/mbed-os.git mbed-os
 cd mbed-os
 git checkout mbed-os-6.16.0-rc1
@@ -14,7 +16,12 @@ git clone https://github.com/ARMmbed/ntp-client.git
 cd ntp-client
 git checkout e919cfb
 
+cd ..
+if [ -d "$DIR" ];
+then
 # create the private keys and update the following files
-#cd..
-#cp private/mbed_app.json .
-#cp private/google_cloud_credentials.h .
+    cp private/mbed_app.json .
+    cp private/google_cloud_credentials.h .
+else
+    echo "Error [$DIR] don't exist. Please create the secret keys first"
+fi
