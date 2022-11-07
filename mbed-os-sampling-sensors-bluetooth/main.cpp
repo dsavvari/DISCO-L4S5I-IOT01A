@@ -75,9 +75,9 @@ public:
 
     virtual void onDataWritten(const GattWriteCallbackParams &params) override {
         if ((params.handle == ledChar_.getValueHandle()) && (params.len == 1)) {
-        printf("New LED value: %x\r\n", *(params.data));
-        ledValue_ = *(params.data);
-        led_ = ledValue_;
+            printf("New LED value: %x\r\n", *(params.data));
+            ledValue_ = *(params.data);
+            led_ = ledValue_;
         }
     }
 
@@ -89,7 +89,6 @@ public:
 
 
     void updateSensors(BLE &ble) {
-
         printf("Updating sensors...\n");
         float temp = BSP_TSENSOR_ReadTemp();
         float humid = BSP_HSENSOR_ReadHumidity();

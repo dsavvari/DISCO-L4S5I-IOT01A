@@ -1,0 +1,10 @@
+.build
+.mbed
+projectfiles
+*.py*
+mbed-os
+mbed-client-for-google-iot-cloud
+ntp-client
+BUILD
+*.bin
+*.o
