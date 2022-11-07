@@ -1,27 +1,45 @@
-DIR="private"
+PRIVATE_KEYS_DIR="private"
+MBED_OS_DIR="mbed-os"
+GOOGLE_IOT_DIR="mbed-client-for-google-iot-cloud"
+NTP_CLIENT_DIR="ntp-client"
 
-git clone https://github.com/ARMmbed/mbed-os.git mbed-os
-cd mbed-os
-git checkout mbed-os-6.16.0-rc1
-git apply --check ../mbed_lib.json.patch
-git apply  ../mbed_lib.json.patch
+if [ -d "$MBED_OS_DIR" ];
+then
+    echo "[$MBED_OS_DIR] exist.[OK]"
+else
+	git clone https://github.com/ARMmbed/mbed-os.git mbed-os
+	cd mbed-os
+	git checkout mbed-os-6.16.0-rc1
+	git apply --check ../mbed_lib.json.patch
+	git apply  ../mbed_lib.json.patch
+	cd ..
+fi
 
-cd ..
-git clone https://github.com/ARMmbed/mbed-client-for-google-iot-cloud
-cd mbed-client-for-google-iot-cloud
-git checkout cbf19de
+if [ -d "$GOOGLE_IOT_DIR" ];
+then
+    echo "[$GOOGLE_IOT_DIR] exist.[OK]"
+else
+	git clone https://github.com/ARMmbed/mbed-client-for-google-iot-cloud
+	cd mbed-client-for-google-iot-cloud
+	git checkout cbf19de
+	cd ..
+fi
 
-cd ..
-git clone https://github.com/ARMmbed/ntp-client.git
-cd ntp-client
-git checkout e919cfb
+if [ -d "$NTP_CLIENT_DIR" ];
+then
+    echo "[$NTP_CLIENT_DIR] exist.[OK]"
+else
+	git clone https://github.com/ARMmbed/ntp-client.git
+	cd ntp-client
+	git checkout e919cfb
+	cd ..
+fi
 
-cd ..
-if [ -d "$DIR" ];
+if [ -d "$PRIVATE_KEYS_DIR" ];
 then
 # create the private keys and update the following files
     cp private/mbed_app.json .
     cp private/google_cloud_credentials.h .
 else
-    echo "Error [$DIR] don't exist. Please create the secret keys first"
+    echo "Error [$PRIVATE_KEYS_DIR] don't exist. Please create the secret keys first"
 fi
