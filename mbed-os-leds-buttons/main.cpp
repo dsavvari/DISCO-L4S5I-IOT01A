@@ -1,5 +1,5 @@
 /*
- * Mbed OS Simple Digital/PWM/Intterupt example using on board and external components.
+ * Mbed OS Simple Digital/PWM/Interrupt example using on board and external components.
  * Copyright (c) 2022 dimitris@computer.org
  * SPDX-License-Identifier: Apache-2.0
  */
